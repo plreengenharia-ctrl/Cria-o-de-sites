@@ -34,6 +34,20 @@ O Designer deve fundamentar decisões e revisar a própria entrega. O Diretor co
 
 Nas tarefas pertinentes de design, UI/UX, responsividade, acessibilidade visual e animação, leia e siga `.agents/skills/impeccable/SKILL.md`, usando os scripts e as referências necessários. Aproveite o contexto existente em `PRODUCT.md` e `DESIGN.md`, quando houver. A skill orienta o processo; seus arquivos auxiliares não comprovam ativação automática de subagentes ou hooks.
 
+## Programador Full Stack Sênior sob demanda
+
+O perfil está em `.codex/agents/programador_fullstack.toml`. Convoque-o automaticamente quando a tarefa justificar implementação funcional relevante, arquitetura, APIs, autenticação, dados, integrações ou investigação de bugs complexos. Resolva ajustes triviais diretamente; não convoque os dois especialistas em toda tarefa por padrão.
+
+Use seleção nativa de perfil se disponível. Sem seletor, como nesta sessão, use `collaboration.spawn_agent` com `task_name: "programador_fullstack"`, preferencialmente `fork_turns: "none"`, e peça explicitamente a leitura do TOML e a adoção de seu `developer_instructions`. Inclua raiz, objetivo, contexto mínimo, critérios de aceite e limites de escrita. O nome da tarefa não carrega o perfil sozinho. Acompanhe e confira o resultado pelas ferramentas nativas, sem simular delegação.
+
+### Colaboração entre Designer e Programador
+
+- O Designer lidera UX, direção visual, tokens e estados de interação; o Programador lidera arquitetura, implementação funcional, APIs e dados. O Diretor resolve sobreposições e coordena a integração.
+- Alinhe contratos de componentes e APIs, estados, acessibilidade e responsividade antes da implementação relevante. Defina um responsável por arquivo e etapa; CSS, componentes e animações não pertencem automaticamente aos dois agentes.
+- Execute em paralelo apenas tarefas com arquivos independentes. Em arquivos compartilhados, exija entrega e transferência explícita de responsabilidade. Revisão é somente leitura por padrão; correções voltam ao responsável definido.
+- Quando necessário, o Designer revisa a fidelidade da implementação e o Programador avalia viabilidade e comportamento. Use mensagens entre agentes ou coordenação pelo Diretor, com referências curtas e evidências, evitando cópia de todo o histórico.
+- O Programador pode sugerir bibliotecas e ferramentas, mas deve justificar necessidade e respeitar as autorizações de instalação e integrações. Preserve o Designer e a Impeccable; não configure outros especialistas por consequência.
+
 ## Validação e entrega
 
 - Exija validação proporcional à alteração antes de entregá-la: revisão do diff, verificações existentes e testes relevantes. Para interfaces, examine a renderização nos tamanhos pertinentes quando houver recursos disponíveis.
