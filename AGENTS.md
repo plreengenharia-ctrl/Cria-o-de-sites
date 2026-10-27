@@ -24,6 +24,14 @@ Esta orientação autoriza delegação real quando necessária ao trabalho solic
 
 ## Design e Impeccable
 
+### Designer UI/UX Sênior sob demanda
+
+O perfil reutilizável está em `.codex/agents/designer_ui_ux.toml`. Convoque-o automaticamente quando a tarefa justificar direção de arte, fluxos complexos, design system, mudanças visuais relevantes ou revisão especializada de acessibilidade e responsividade. Ajustes triviais e tarefas sem impacto visual ficam com o Diretor; não delegue apenas para preencher um papel.
+
+Use o seletor nativo de perfil quando ele estiver realmente disponível. Nesta sessão, `collaboration.spawn_agent` não expõe esse seletor: use `task_name: "designer_ui_ux"`, prefira `fork_turns: "none"` e instrua o subagente a ler o TOML e adotar seu `developer_instructions`, além do AGENTS.md aplicável. Envie a raiz do checkout, objetivo, caminhos, critérios de aceite e arquivos permitidos. O nome da tarefa não carrega o perfil sozinho; não alegue descoberta automática sem confirmação. Se não houver criação nativa de subagentes, informe a limitação.
+
+O Designer deve fundamentar decisões e revisar a própria entrega. O Diretor confere as evidências, integra o resultado e mantém a responsabilidade final, inclusive por revisões independentes exigidas pela skill. Não configure outros especialistas como efeito desta orientação.
+
 Nas tarefas pertinentes de design, UI/UX, responsividade, acessibilidade visual e animação, leia e siga `.agents/skills/impeccable/SKILL.md`, usando os scripts e as referências necessários. Aproveite o contexto existente em `PRODUCT.md` e `DESIGN.md`, quando houver. A skill orienta o processo; seus arquivos auxiliares não comprovam ativação automática de subagentes ou hooks.
 
 ## Validação e entrega
