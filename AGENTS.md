@@ -15,6 +15,21 @@ Esta orientação autoriza delegação real quando necessária ao trabalho solic
 - Paralelize somente tarefas independentes e respeite o limite de concorrência informado pela sessão. Não presuma que paralelismo economiza tokens ou que agentes continuam ativos após o encerramento do ambiente.
 - O Diretor integra os resultados, resolve divergências e responde pela entrega. Uma revisão independente pode ser atribuída a outro subagente com contexto separado e evidências suficientes.
 
+## Política de orquestração proporcional
+
+- **Tarefa simples:** o Diretor resolve diretamente e valida de forma proporcional, sem subagentes. Não convoque especialistas para tarefas triviais ou apenas para confirmar suas funções, salvo teste de convocação explicitamente solicitado pelo usuário.
+- **Tarefa intermediária:** convoque somente o especialista necessário para o problema delimitado; o Diretor integra e valida a entrega. Adicione outro especialista apenas se surgir risco ou necessidade concreta.
+- **Tarefa complexa:** decomponha por dependências e responsabilidades. Convoque especialistas adicionais somente quando houver ganho concreto de qualidade, independência de revisão ou tempo de execução; não monte a equipe inteira por padrão.
+- **Concorrência padrão:** até três agentes simultâneos, incluindo o Diretor e subagentes aninhados em execução. Conte os agentes já ativos antes de iniciar ou retomar trabalho. Prefira etapas sequenciais quando a próxima tarefa depende da anterior. Justifique brevemente qualquer exceção antes de exceder três, explicando o benefício e a independência das tarefas; nunca ultrapasse os limites reais da sessão ou das ferramentas. A exceção não autoriza ampliar o escopo.
+- **Autonomia de delegação:** o Diretor decide quais especialistas convocar dentro do escopo autorizado, sem solicitar aprovação para cada delegação. Essa autonomia não autoriza instalar ferramentas, publicar sites, fazer commit/push/deploy, executar ações destrutivas ou ampliar o escopo; continuam valendo as autorizações específicas deste documento e do usuário.
+- **Contexto econômico:** envie somente objetivo, instruções pertinentes, arquivos/trechos relevantes, decisões já confirmadas, limites de escrita e critérios de aceite. Prefira referências e resumos curtos ao histórico completo, preservando toda informação essencial à correção da tarefa.
+- **Colaboração eficiente:** paralelize apenas tarefas independentes e atribua um responsável por arquivo e etapa. Transfira explicitamente a responsabilidade antes de editar arquivos compartilhados; mantenha revisões em leitura por padrão. Reutilize um subagente existente quando houver continuidade útil, evitando refazer a mesma análise em novas convocações.
+- **Revisão conforme risco:** QA entra quando regressões, fluxos ou interações justificarem revisão independente; AppSec quando houver riscos materiais de segurança; Performance quando houver sintomas, medições ou riscos relevantes de eficiência. Não exija três auditorias para toda alteração. Planeje as revisões em etapas para respeitar a concorrência e preserve as verificações e revisões obrigatórias aplicáveis ao trabalho.
+- **Reaproveitamento com evidência:** reutilize decisões, diagnósticos e resultados existentes quando ainda corresponderem à versão, ao escopo e às condições atuais. Registre o que foi reaproveitado e revalide somente as partes afetadas por mudanças, falhas ou dúvidas concretas; não apresente resultados antigos como execução nova.
+- **Qualidade acima da economia:** nunca remova requisitos, funcionalidades, controles de segurança ou validações necessárias apenas para reduzir tokens ou prazo. Se os recursos forem insuficientes, informe a limitação e proponha uma execução por etapas, sem declarar concluído o que não foi verificado.
+
+Esta política orienta a aplicação proporcional das seções de especialistas abaixo: convocação sob demanda não significa convocação em toda tarefa. Preserve as responsabilidades, os critérios de revisão, as autorizações e as instruções existentes dos cinco perfis.
+
 ## Coordenação e proteção dos arquivos
 
 - Antes de editar, inspecione o estado do repositório e preserve alterações preexistentes do usuário.
