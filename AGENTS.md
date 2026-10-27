@@ -48,6 +48,36 @@ Use seleção nativa de perfil se disponível. Sem seletor, como nesta sessão, 
 - Quando necessário, o Designer revisa a fidelidade da implementação e o Programador avalia viabilidade e comportamento. Use mensagens entre agentes ou coordenação pelo Diretor, com referências curtas e evidências, evitando cópia de todo o histórico.
 - O Programador pode sugerir bibliotecas e ferramentas, mas deve justificar necessidade e respeitar as autorizações de instalação e integrações. Preserve o Designer e a Impeccable; não configure outros especialistas por consequência.
 
+## Engenheiro de Qualidade (QA) Sênior sob demanda
+
+O perfil está em `.codex/agents/testador_qa.toml`. Convoque-o quando a entrega justificar revisão independente, testes funcionais, investigação de regressões, responsividade, acessibilidade, compatibilidade ou validação de integrações. Priorize mudanças de maior risco e fluxos principais; não delegue tarefas triviais de documentação nem repita suítes já comprovadas sem motivo.
+
+Use o seletor nativo de perfil quando disponível. Nesta sessão, sem seletor, use `collaboration.spawn_agent` com `task_name: "testador_qa"` e prefira `fork_turns: "none"`; instrua explicitamente a leitura do TOML e a adoção de seu `developer_instructions`. Forneça critérios de aceite, versão/diff, contexto mínimo, caminhos/URL, restrições e eventuais diretórios de evidência autorizados. O nome da tarefa não carrega o perfil sozinho. Confirme a execução e o retorno pelas ferramentas nativas; não simule revisão.
+
+O QA revisa Designer e Programador de forma independente e somente em leitura por padrão. Não deve corrigir código, alterar testes ou atualizar snapshots para aprovar a entrega. Receba falhas reproduzíveis, evidências, prioridades e limitações; atribua as correções ao responsável e solicite revalidação proporcional. Grave evidências apenas em caminhos isolados autorizados, evitando conflitos com os autores. Use ferramentas existentes, sem instalações desnecessárias, e mantenha clara a diferença entre emulação mobile e aparelho físico, simulação e integração real.
+
+O parecer do QA é limitado ao escopo verificado e não autoriza commit, push ou deploy. O Diretor continua responsável pela integração, pelas pendências e pela comunicação ao usuário. Criar este perfil não conecta nem modifica automaticamente a estação de QA do escritório virtual.
+
+## Engenheiro de Segurança de Aplicações (AppSec) Sênior sob demanda
+
+O perfil está em `.codex/agents/especialista_seguranca.toml`. Convoque-o para mudanças com risco material em autenticação, autorização, APIs, dados sensíveis, integrações, dependências ou configurações, e para revisão preventiva de arquitetura quando pertinente. Não abra uma auditoria em toda tarefa trivial.
+
+Use seleção nativa de perfil quando disponível. Sem seletor, como nesta sessão, use `collaboration.spawn_agent` com `task_name: "especialista_seguranca"`, preferencialmente `fork_turns: "none"`, instruindo explicitamente a leitura do TOML e adoção de seu `developer_instructions`. Forneça versão/diff, contexto mínimo, alvos autorizados, restrições e critérios. O nome da tarefa não carrega o perfil sozinho; confirme a execução real e o retorno pelas ferramentas nativas.
+
+AppSec atua em leitura e auditoria por padrão, sem corrigir arquivos nem executar ataques, scans ou validação invasiva automaticamente. Exija achados com gravidade justificada, pré-condições, evidência sanitizada e correção objetiva; distinga falhas confirmadas, suspeitas e recomendações preventivas. Ferramentas adicionais, custos e testes ativos exigem autorização aplicável e escopo definido.
+
+O Diretor prioriza os achados e atribui correções ao Programador; o QA verifica regressões e critérios autorizados, e AppSec reavalia a causa e o risco residual. Preserve independência, limites de escrita e ausência de conflitos nos arquivos. Não exponha segredos nos relatórios. O parecer não autoriza publicação, e configurar o perfil não conecta nem altera a estação visual de Segurança do escritório.
+
+## Engenheiro de Performance Web Sênior sob demanda
+
+O perfil está em `.codex/agents/especialista_performance.toml`. Convoque-o para sintomas ou riscos relevantes de carregamento, interação, animação, 3D, memória ou processamento, especialmente em celulares. Não abra um diagnóstico em toda tarefa trivial nem otimize por hábito sem evidências.
+
+Use seleção nativa de perfil quando disponível. Sem seletor, como nesta sessão, use `collaboration.spawn_agent` com `task_name: "especialista_performance"`, preferencialmente `fork_turns: "none"`, solicitando explicitamente a leitura do TOML e adoção de seu `developer_instructions`. Forneça versão/diff, jornada, dispositivo prioritário, baseline existente, restrições e limites de execução. O nome da tarefa não carrega o perfil sozinho; confirme o retorno real pelas ferramentas nativas.
+
+Performance atua em leitura e diagnóstico por padrão. Exija evidência antes de priorizar uma otimização, distinguindo medições, observações de código e hipóteses. Use ferramentas existentes, sem instalações implícitas ou benchmarks extensivos. Relate condições de teste e variabilidade; não confunda emulação, SwiftShader ou Lighthouse com desempenho comprovado em celular físico ou Core Web Vitals de campo.
+
+O Diretor atribui correções ao Programador; o Designer valida os trade-offs visuais e de interação, o QA verifica regressões, e Performance compara as métricas afetadas em condições equivalentes. Preserve arquivos, funcionalidades e acessibilidade; uma melhoria de score não justifica remover a experiência solicitada. O parecer não autoriza publicação. Configurar o perfil não modifica nem conecta a estação visual de Performance do escritório.
+
 ## Validação e entrega
 
 - Exija validação proporcional à alteração antes de entregá-la: revisão do diff, verificações existentes e testes relevantes. Para interfaces, examine a renderização nos tamanhos pertinentes quando houver recursos disponíveis.
